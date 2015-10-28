@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/gsaNavigation.css">
+    <title>Sustainable GSA</title>
+    <script src="js/lib/respond.js"></script>
+    <script src="js/lib/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+<!-- START Header -->
+    <script id="main-nav-template" type="text/x-handlebars-template">
+        {{#each navigation}}
+        <li><a href="{{ link }}">{{ text }}</a>
+            {{#if children}}
+            <ul class="dropdown-menu">
+                {{#each children}}
+                <li><a href="{{ link }}">{{ text }}</a>
+                    {{#if children}}
+                    <ul class="dropdown-menu">
+                        {{#each children}}
+                        <li><a href="{{ link }}">{{ text }}</a></li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                </li>
+                {{/each}}
+                <span class="divider-vertical"></span>
+                <div class="featured-navigation-content">
+                    <p class="large-text-display">{{ featured.text }}</p>
+                    {{#if featured.author}}
+                    <p><i>&mdash;{{ featured.author }}</i></p>
+                    {{/if}}
+                </div>
+            </ul>
+            {{/if}}
+        </li>
+        {{/each}}
+        <li class="last-child"><a id="main-nav-search-button" href="#"><i class="glyphicon glyphicon-search"></i></a></li>
+    </script>
+    <script id="mobile-nav-template" type="text/x-handlebars-template">
+        {{#each navigation}}
+        <li><a class="toggle-submenu" href="{{ link }}">{{ text }}<span class="icon-arrow-down"></span></a>
+            {{#if children}}
+            <ul>
+                {{#each children}}
+                <li><a class="toggle-second-level-submenu" href="{{ link }}">{{ text }}<span class="icon-arrow-down"></span></a>
+                    {{#if children}}
+                    <ul>
+                        {{#each children}}
+                        <li><a href="{{ link }}">{{ text }}</a></li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </li>
+        {{/each}}
+    </script>
+
+
+
+    <!-- mobile header -->
+    <header id="mobile-header" class="clearfix hidden-sm hidden-md hidden-lg">
+        <div id="mobile-port">
+            <figure id="mobile-logo">
+                <img src="/resources/images/nav-logo.jpg" class="img-responsive" alt="GSA Logo">
+            </figure>
+            <form accept-charset="UTF-8" action="http://search.gsa.gov/search" id="mobile-search" method="get">
+                <input name="affiliate" type="hidden" value="gsa.gov">
+                <input name="utf8" type="hidden" value="✓">
+                <div class="form-group">
+                    <label class="sr-only" for="query">Enter Search Term(s):</label>
+                    <input autocomplete="off" class="form-control usagov-search-autocomplete ui-autocomplete-input" id="mobile_query" name="query" type="text" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+                    <button id="submit-search" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </div>
+            </form>
+            <button id="hamburger-toggle" class="cmn-toggle-switch cmn-toggle-switch__htx visible-sm visible-xs toggled toggled-off">
+                <span>toggle menu</span>
+            </button>
+        </div>
+        <nav id="slideout-menu">
+            <ul><!-- TEMPLATE FOR MOBILE NAV --></ul>
+        </nav>
+    </header>
+    <!-- /mobile header -->
+
+    <header id="inner-main-navigation" class="navbar-fixed-top hidden-xs">
+        <div id="skip" style="width: 100%;" class="text-center"><a href="#page-content">Skip to Main Content</a></div>
+        <nav class="navbar navbar-default container" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"><img class="img-responsive" src="/resources/images/nav-logo.jpg"></a>
+            </div>
+            <ul class="nav navbar-nav" id="main-nav">
+                <!-- TEMPLAT OF NAV GOES HERE -->
+            </ul>
+            <!-- search form -->
+            <form class="main-nav-search-field" accept-charset="UTF-8" action="http://search.gsa.gov/search" id="search_form" method="get">
+                <div class="search-input form-group">
+                    <input name="utf8" type="hidden" value="?">
+                    <input id="affiliate" name="affiliate" type="hidden" value="gsa.gov">
+                    <div style="position:relative">
+                        <label for="query" class="sr-only">Enter Search Term(s):</label>
+                        <input autocomplete="off" class="usagov-search-autocomplete ui-autocomplete-input fsrVisible form-control" id="query" name="query" type="text" role="textbox" aria-autocomplete="list" aria-haspopup="true" placeholder="Search">
+                        <button type="submit" id="submit-gsa-search" name="commit" class="btn btn-default"><span class="icon-arrow-right"></span></button>
+                    </div>
+                </div>
+            </form>
+        </nav>
+    </header>
+	<!-- Start BREADCRUMBS -->
+	<nav id="breadcrumbs" class="hidden-xs">
+		<div class="container">
+			<div class="breadcrumb">
+				<a href="http://gsa.gov/portal/category/100000">Home</a> &gt; Sustainable GSA
+			</div>
+		</div>
+	</nav>
+<!-- END HEADER BLOCK -->
+	
+<div class="container">
+    <section id="landing">
+        <!-- thumb navigation -->
+        <nav id="thumb-nav" class="clearfix"></nav>
+
+        <!--- carousel -->
+        <div id="sustainable-gsa">
+            <!-- blocks/slides -->
+            <div class="blocks-container"></div>
+            <div id="second-level" class="row">
+                <article class="col-sm-6" id="ajax-cid">
+                    
+                </article>
+                <article class="col-sm-6">
+					<div class="row">
+						<figure class="col-xs-3">
+							<img src="images/KEVIN-FPO.png" alt="Icon Image of Kevin Kampschroer" class="img-responsive" />
+						</figure>
+						<div class="col-xs-9" style="background-color: #f6f6f6;">
+							<p>Kevin Kampschroer <br>
+							Senior Sustainability Officer<br>
+							Contact: <a href="mailto:sustainability@gsa.gov">sustainability@gsa.gov</a></p>
+						</div>
+					</div>
+                </article>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="additional-content">
+        <!-- ANOTHER ROW OF CONTENT HERE -->
+
+    </section>
+</div>
+<!-- footer -->
+<div class="clearfix"></div>
+<script id="footer-links-template" type="text/x-handlebars-template">
+	{{#each footer}}
+	<ul class="list-unstyled col-sm-2">
+		<h4>{{ header }}</h4>
+		{{#if children}}
+		{{#each children}}
+		<li><a href="{{ link }}">{{ text }}</a></li>
+		{{/each}}
+		{{/if}}
+	</ul>
+	{{/each}}
+</script>
+<footer id="footer">
+	<div class="container">
+		<div class="row" id="footer-links">
+
+		</div>
+	</div>
+</footer>
+<div id="footer-bar">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-7">
+				<h3>U.S. General Services Administration</h3>
+			</div>
+			<div class="col-sm-5 social-links">
+				<ul class="list-unstyled list-inline">
+					<li><a href="#" title="Facebook"><span class="icon-facebook"></span></a></li>
+					<li><a href="#" title="Twitter"><span class="icon-twitter"></span></a></li>
+					<li><a href="#" title="Youtube"><span class="icon-youtube"></span></a></li>
+					<li><a href="#" title="Instagram"><span class="icon-instagram"></span></a></li>
+					<li><a href="#" title="RSS"><span class="icon-rss"></span></a></li>
+				</ul>
+				<h5>Join the Conversation</h5>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- scripts -->
+<script type="text/javascript" src="js/lib/jquery-1.11.2.min.js"></script>
+
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/handlebars-v4.0.2.js" type="text/javascript"></script>
+<script src="js/navigation-json.js" type="text/javascript"></script>
+<script src="js/jquery.smartmenus.min.js" type="text/javascript" ></script>
+<script src="js/jquery.smartmenus.bootstrap.min.js" type="text/javascript" ></script>
+<script src="js/navigation.js" type="text/javascript" type="text/javascript" ></script>
+<script type="text/javascript" src="js/lib/grapnel.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+
+</body>
+</html>
